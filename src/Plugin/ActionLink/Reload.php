@@ -5,7 +5,6 @@ namespace Drupal\ui_patterns_flag\Plugin\ActionLink;
 use Drupal\flag\Plugin\ActionLink\Reload as OriginalReload;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Drupal\ui_patterns\Form\PatternDisplayFormTrait;
 use Drupal\ui_patterns_flag\PatternActionLinkTrait;
 use Drupal\ui_patterns\UiPatternsSourceManager;
@@ -66,8 +65,6 @@ class Reload extends OriginalReload {
    *   The plugin definition array.
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request from the request stack.
    * @param \Drupal\flag\FlagCountManagerInterface $flag_count_manager
    *   Flag count manager.
    * @param \Drupal\ui_patterns\UiPatternsManager $patterns_manager
@@ -77,8 +74,8 @@ class Reload extends OriginalReload {
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   Module handler.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, AccountInterface $current_user, Request $request, FlagCountManagerInterface $flag_count_manager, UiPatternsManager $patterns_manager, UiPatternsSourceManager $source_manager, ModuleHandlerInterface $module_handler) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $current_user, $request);
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, AccountInterface $current_user, FlagCountManagerInterface $flag_count_manager, UiPatternsManager $patterns_manager, UiPatternsSourceManager $source_manager, ModuleHandlerInterface $module_handler) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $current_user);
     $this->flagCountManager = $flag_count_manager;
     $this->patternsManager = $patterns_manager;
     $this->sourceManager = $source_manager;
@@ -94,7 +91,6 @@ class Reload extends OriginalReload {
       $plugin_id,
       $plugin_definition,
       $container->get('current_user'),
-      $container->get('request_stack')->getCurrentRequest(),
       $container->get('flag.count'),
       $container->get('plugin.manager.ui_patterns'),
       $container->get('plugin.manager.ui_patterns_source'),

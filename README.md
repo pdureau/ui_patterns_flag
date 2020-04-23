@@ -9,7 +9,7 @@ Display flag action links with UI Patterns.
 REQUIREMENTS
 ------------
 
-This module requires the following module:
+This module requires the following modules:
 
  * UI Patterns (https://www.drupal.org/project/ui_patterns):
    Define and expose self-contained UI patterns as Drupal plugins and use them 

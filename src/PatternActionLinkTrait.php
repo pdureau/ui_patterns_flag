@@ -53,6 +53,10 @@ trait PatternActionLinkTrait {
     if (!$pattern || $pattern === '_none') {
       return $build;
     }
+    // "Display link as field" has to be checked.
+    if (!array_key_exists('#title', $build)) {
+      return $build;
+    }
 
     // Gather all values of each fields.
     $mapping = $config['pattern_mapping'];

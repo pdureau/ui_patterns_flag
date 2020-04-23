@@ -6,6 +6,6 @@
   "license": "GPL-2.0-or-later",
   "require": {
     "drupal/ui_patterns": "^1.1",
-    "drupal/flag": "^8.x-4.0-beta1"
+    "drupal/flag": "^4.0@beta"
   }
 } 
